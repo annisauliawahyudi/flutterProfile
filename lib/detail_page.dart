@@ -45,7 +45,7 @@ class DetailPage extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Icon(iconData, size: 50, color: Colors.deepOrange),
+                            Icon(iconData, size: 50, color: const Color.fromARGB(255, 0, 0, 0)),
                             const SizedBox(width: 20),
                             Expanded(
                               child: Text(
@@ -62,54 +62,14 @@ class DetailPage extends StatelessWidget {
                         Text(
                           detail,
                           style:
-                              TextStyle(fontSize: 16, color: Colors.grey[600]),
+                              TextStyle(fontSize: 15, color: Colors.grey[600]),
                         ),
                       ],
                     ),
                   ),
                 ),
               ),
-              const SizedBox(height: 20), // Space between cards
-              SizedBox(
-                width: 350, // Width of the second card
-                child: Card(
-                  elevation: 8, // Shadow effect
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(CupertinoIcons.phone,
-                                size: 50,
-                                color: Colors.deepOrange), // Icon for phone
-                            const SizedBox(width: 20),
-                            Expanded(
-                              child: Text(
-                                'Phone',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        Text(
-                          'You can add more details about the phone here, for example.',
-                          style:
-                              TextStyle(fontSize: 16, color: Colors.grey[600]),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+              
             ],
           ),
         ),

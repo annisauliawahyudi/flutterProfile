@@ -1,9 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'login_screen.dart'; // Ganti impor dari main.dart ke login_screen.dart
 import 'detail_page.dart'; // Import halaman detail
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  final String nama;
+  final String sekolah;
+
+  const ProfileScreen({Key? key, required this.nama, required this.sekolah})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +18,7 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 40),
-            CircleAvatar(
+            const CircleAvatar(
               radius: 70,
               backgroundImage: AssetImage(
                   'assets/images/fotoprofil.jpg'), // Pastikan gambar ada di direktori assets
@@ -22,24 +27,35 @@ class ProfileScreen extends StatelessWidget {
             itemProfile(
                 context,
                 'Name',
-                'Annisa Aulia Wahyudi',
+                nama, // Menggunakan data yang di-pass dari DataDiriForm
                 CupertinoIcons.person,
-                "My name is Annisa Aulia Wahyudi, and I’m a 12th-grade student at SMK Wikrama Bogor, majoring in Software Engineering. I enjoy programming, especially in web and mobile app development, and I'm actively involved in projects to enhance my skills. After graduation, I aspire to build a career in IT and continue expanding my knowledge of technology."),
+                "My name is $nama, and I’m a 12th-grade student at $sekolah. I enjoy programming, especially in web and mobile app development. I'm actively involved in projects to enhance my skills. After graduation, I aspire to build a career in IT and continue expanding my knowledge of technology."),
             const SizedBox(height: 10),
             itemProfile(
                 context,
                 'School',
-                'Vocational High School Student at SMK Wikrama Bogor',
+                sekolah, // Menggunakan data sekolah dari form
                 CupertinoIcons.location,
                 'Jl. Raya Wangun, RT.01/RW.06, Sindangsari, Kec. Bogor Tim., Kota Bogor, Jawa Barat 16146'),
             const SizedBox(height: 10),
-            itemProfile(
-                context,
-                'Email',
-                'annisaaulia9706@gmail.com',
-                CupertinoIcons.mail,
-                'Contact Me!'),
+            itemProfile(context, 'Email', 'annisaaulia@gmail.com',
+                CupertinoIcons.mail, 'Contact Me!'),
             const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Logout dan kembali ke halaman LoginScreen
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          LoginScreen()), // Hapus const jika error
+                );
+              },
+              child: const Text('Logout'),
+              // style: ElevatedButton.styleFrom(
+              //   primary: Colors.deepOrange,
+              // ),
+            ),
           ],
         ),
       ),
@@ -79,7 +95,8 @@ class ProfileScreen extends StatelessWidget {
               ),
             );
           },
-          child: Text('See More', style: TextStyle(color: Colors.deepOrange)),
+          child: const Text('See More',
+              style: TextStyle(color: Color.fromARGB(255, 201, 157, 190))),
         ),
       ),
     );

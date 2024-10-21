@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'login_screen.dart'; // Import halaman LoginScreen
 import 'package:flutter/services.dart';
-import 'profile_screen.dart'; // Import halaman ProfileScreen
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -16,11 +16,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Profile',
+      title: 'Login',
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
       ),
-      home: const ProfileScreen(), // Set halaman utama menjadi ProfileScreen
+      home: const LoginScreen(), // Set halaman utama menjadi LoginScreen
     );
   }
 }
